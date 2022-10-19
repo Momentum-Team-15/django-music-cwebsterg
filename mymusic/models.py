@@ -10,6 +10,7 @@ class User(AbstractUser):
 class Album(models.Model):
     title = models.CharField(max_length=200)
     artist = models.CharField(max_length=200)
+    released = models.DateField(null=True, blank=True)
     # ForeignKey representsa 1:many relationship (O2M)
     # the one is the field and the many are from the class
     # it is defined on

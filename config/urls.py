@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from mymusic import views
 
 urlpatterns = [
+    # set up url pattern to handle admin site paths
     path('admin/', admin.site.urls),
+    # to handle any accounts view/site paths
     path('accounts/', include('registration.backends.simple.urls')),
+    # below is to activate the django toolbar which don't need right now
     path('__debug__/', include('debug_toolbar.urls')),
+    path('', views.index, name='home'),
 ]
