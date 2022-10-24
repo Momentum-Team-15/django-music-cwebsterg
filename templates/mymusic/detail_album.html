@@ -1,7 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="album">
-        <h2>{{ album.title }}</h2>
-    </article>
+<div class="album-block">
+    <h2><a href="{% url 'detail_album' pk=album.pk %}">{{ album.title }}</a></h2>
+    {% if album.album_cover %}
+    <img class=img-lg src="{{ album.album_cover }}">
+    {% else %}
+    <img class=img-lg src="static/images/adobe-113797565.jpg">
+    {% endif %}
+    {% if album.artist %}
+        <div class="artist">by {{ album.artist }}</div>
+    {% else %}
+        <div class="no-image">No album cover on file.</div>
+    {% end if %}
+    {% if album.released %}
+        <div class="released">released {{ album.released }}</div>
+    {% else %}
+        <div class="no-release">No release date avaiable.</div>
+    {% end if %}
+    <div class="data-info">Album Added {{ album</div>
+</div>    
 {% endblock %}
