@@ -11,13 +11,17 @@
     {% if album.artist %}
         <div class="artist">by {{ album.artist }}</div>
     {% else %}
-        <div class="no-image">No album cover on file.</div>
-    {% end if %}
+        <div class="no-image">No artist available.</div>
+    {% endif %}
     {% if album.released %}
         <div class="released">released {{ album.released }}</div>
     {% else %}
         <div class="no-release">No release date avaiable.</div>
-    {% end if %}
-    <div class="data-info">Album Added {{ album</div>
+    {% endif %}
+    <div class="data-info">Album Added {{ album.created }}</div>
+    <div class="data-info">Album Last Updated {{ album.updated }}</div>
+    <a href="{% url 'edit_album' pk=album.pk %}">
+        <button type="submit">Edit</button>
+    </a>
 </div>    
 {% endblock %}

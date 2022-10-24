@@ -13,13 +13,8 @@
         {% if album.artist %}
             <div class="artist">by {{ album.artist }}</div>
         {% else %}
-            <div class="no-image">No album cover on file.</div>
-        {% end if %}
-        {% if album.released %}
-            <div class="released">released {{ album.released }}</div>
-        {% else %}
-            <div class="no-release">No release date avaiable.</div>
-        {% end if %}
+            <div class="no-image">Artist Unknown</div>
+        {% endif %}
     </div>    
     {% endfor %}
 

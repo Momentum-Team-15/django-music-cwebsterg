@@ -26,10 +26,6 @@ class Album(models.Model):
     album_cover = models.ImageField(null=True, blank=True)
     released = models.DateField(null=True, blank=True)
     user = models.ForeignKey('User', on_delete=models.CASCADE, null=True, blank=True)
-
-    # ForeignKey representsa 1:many relationship (O2M)
-    # the one is the field and the many are from the class
-    # it is defined on
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now_add=True)
 
