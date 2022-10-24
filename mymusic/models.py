@@ -4,8 +4,8 @@ from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
 class User(AbstractUser):
-    last_name = models.CharField(max_length=25)
-    first_name = models.CharField(max_length=25)
+    last_name = models.CharField(max_length=25, default='Last Name')
+    first_name = models.CharField(max_length=25, default='First Name')
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     birthdate = models.DateField(null=True, blank=True)
@@ -23,7 +23,10 @@ class User(AbstractUser):
 class Album(models.Model):
     title = models.CharField(max_length=200)
     artist = models.ForeignKey('Artist', on_delete=models.CASCADE)
+    album_cover = models.ImageField(null=True, blank=True)
     released = models.DateField(null=True, blank=True)
+    user = models.ForeignKey('User', on_delete=models.CASCADE, null=True, blank=True)
+
     # ForeignKey representsa 1:many relationship (O2M)
     # the one is the field and the many are from the class
     # it is defined on
@@ -49,7 +52,6 @@ class Artist(models.Model):
 class Song(models.Model):
     song = models.CharField(max_length=200)
     album = models.ForeignKey('Album', on_delete=models.CASCADE, related_name='songs')
-    artist = models.ForeignKey('Artist', on_delete=models.CASCADE, related_name='songs')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now_add=True)
 

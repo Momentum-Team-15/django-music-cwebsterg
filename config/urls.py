@@ -22,7 +22,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # to handle any accounts view/site paths
     path('accounts/', include('registration.backends.simple.urls')),
-    # below is to activate the django toolbar which don't need right now
     path('__debug__/', include('debug_toolbar.urls')),
-    path('', views.index, name='home'),
+    path('', views.list_albums, name='home'),
+    path('album/<int:pk>/', views.detail_album, name='detail_album'),
+    path('album/new/', views.create_album, name='create_album'),
+    path('album/<int:pk>/edit', views.edit_album, name='edit_album'),
 ]
